@@ -59,14 +59,14 @@ const Container = styled.div`
   overflow: hidden;
   background: white;
 
+  /* Mobile Fix: Allow container to shrink to content size so footer comes up */
   @media (max-width: 768px) {
-    padding: 0 1rem;
+    min-height: auto;
   }
 `;
 
 const PhotoWrapper = styled.div`
   position: relative;
-
   width: 33.333vw;
   height: 70vh;
   margin-top: 0;
@@ -76,6 +76,12 @@ const PhotoWrapper = styled.div`
   background-size: cover;
   background-position: center;
   filter: grayscale(100%);
+
+  /* Mobile Fix: Make photo wider and adjust height so it doesn't look squished */
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: 55vh;
+  }
 
   &::before,
   &::after {
@@ -89,9 +95,7 @@ const PhotoWrapper = styled.div`
     background-size: cover;
     background-position: center;
     filter: grayscale(100%);
-
     display: block;
-
     background-color: transparent;
   }
 
@@ -104,16 +108,6 @@ const PhotoWrapper = styled.div`
     animation: ${blockGlitch2} 0.3s infinite linear alternate-reverse;
     z-index: 2;
   }
-
-  @media (max-width: 768px) {
-    width: 60vw;
-    height: 50vh;
-  }
-
-  @media (max-width: 480px) {
-    width: 85vw;
-    height: 40vh;
-  }
 `;
 
 const LinkContainer = styled.div`
@@ -121,7 +115,12 @@ const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: auto;
+  margin-bottom: auto; /* Pushes footer down on desktop */
+
+  /* Mobile Fix: Remove the "auto" push and just use standard spacing to kill white space */
+  @media (max-width: 768px) {
+    margin-bottom: 4rem;
+  }
 `;
 
 const GlitchBarBox = styled.div`
@@ -130,10 +129,6 @@ const GlitchBarBox = styled.div`
   background: #ccc;
   position: relative;
   overflow: hidden;
-
-  @media (max-width: 480px) {
-    width: 180px;
-  }
 `;
 
 const GlitchBarFill = styled.div`
@@ -153,11 +148,6 @@ const ApparelLink = styled.a`
 
   &:hover {
     color: #555;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
   }
 `;
 
@@ -199,7 +189,6 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // This timer now only controls the loading bar -> text transition
     const timer = setTimeout(() => {
       setLoadingActive(false);
     }, 4000);
@@ -217,7 +206,6 @@ function Home() {
     <>
       <GlobalAnimations />
       <Container>
-        {/* Removed the $active prop so the photo glitches permanently */}
         <PhotoWrapper $src={streetScene} />
 
         <LinkContainer>
