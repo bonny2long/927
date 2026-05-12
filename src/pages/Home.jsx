@@ -231,7 +231,7 @@ function Home() {
               </IconLink>
             ))}
           </SocialLinks>
-          <Copyright>&copy; 2026 Your Company. All rights reserved.</Copyright>
+          <Copyright>&copy; 2026 +++927+++. All rights reserved.</Copyright>
         </Footer>
       </Container>
     </>
