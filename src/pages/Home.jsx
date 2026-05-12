@@ -58,15 +58,16 @@ const Container = styled.div`
   min-height: 100vh;
   overflow: hidden;
   background: white;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const PhotoWrapper = styled.div`
   position: relative;
 
-  /* Takes up exactly 1/3 of the screen width */
   width: 33.333vw;
-
-  /* Ensure it has a good height and touches the top */
   height: 70vh;
   margin-top: 0;
   margin-bottom: 2rem;
@@ -89,7 +90,6 @@ const PhotoWrapper = styled.div`
     background-position: center;
     filter: grayscale(100%);
 
-    /* Changed from dynamic to always block, making the glitch infinite */
     display: block;
 
     background-color: transparent;
@@ -103,6 +103,16 @@ const PhotoWrapper = styled.div`
   &::after {
     animation: ${blockGlitch2} 0.3s infinite linear alternate-reverse;
     z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    width: 60vw;
+    height: 50vh;
+  }
+
+  @media (max-width: 480px) {
+    width: 85vw;
+    height: 40vh;
   }
 `;
 
@@ -120,6 +130,10 @@ const GlitchBarBox = styled.div`
   background: #ccc;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    width: 180px;
+  }
 `;
 
 const GlitchBarFill = styled.div`
@@ -139,6 +153,11 @@ const ApparelLink = styled.a`
 
   &:hover {
     color: #555;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
   }
 `;
 

@@ -58,6 +58,16 @@ const Title = styled.h1`
   font-size: 4rem;
   margin-bottom: 2rem;
   letter-spacing: 5px;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+    letter-spacing: 2px;
+  }
 `;
 
 const GoBackButton = styled.button`
@@ -74,6 +84,11 @@ const GoBackButton = styled.button`
   &:hover {
     background: #cccccc;
     transform: scale(1.05);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
   }
 `;
 
